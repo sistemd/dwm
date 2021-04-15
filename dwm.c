@@ -1458,6 +1458,8 @@ run(void)
 	XSync(dpy, False);
     system("~/.fehbg");
     system("setxkbmap -option \"caps:escape\"");
+    system("setxkbmap rs -variant latin");
+    system("xset r rate 200 50");
 	while (running && !XNextEvent(dpy, &ev))
 		if (handler[ev.type])
 			handler[ev.type](&ev); /* call handler */
