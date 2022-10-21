@@ -1456,10 +1456,13 @@ run(void)
 	XEvent ev;
 	/* main event loop */
 	XSync(dpy, False);
-    system("~/.fehbg");
-    system("setxkbmap -option \"caps:escape\"");
-    system("setxkbmap rs -variant latin");
-    system("xset r rate 200 50");
+	system("~/.fehbg");
+	system("~/.ghcup/env");
+	system("/usr/lib/notification-daemon-1.0/notification-daemon &");
+	system("batsignal -w 60 -c 55 -d 50 -b");
+	system("setxkbmap -option \"caps:escape\"");
+	system("setxkbmap rs -variant latin");
+	system("xset r rate 200 50");
 	while (running && !XNextEvent(dpy, &ev))
 		if (handler[ev.type])
 			handler[ev.type](&ev); /* call handler */
